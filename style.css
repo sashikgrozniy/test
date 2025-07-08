@@ -4,7 +4,6 @@
 }
 header {
     width: 100%;
-    height: 113px;
     color: black;
     font-size: 14px;
 }
@@ -15,7 +14,6 @@ p {
 	width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-	height: 320px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
