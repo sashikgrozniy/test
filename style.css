@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header {
+    width: 100%;
+    height: 113px;
+    color: black;
+    font-size: 14px;
+}
+p {
+    margin: 44px;
+}
+.container {
+	width: 100%;
+	height: 320px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
