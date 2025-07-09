@@ -7,26 +7,38 @@
     <title>Тест</title>
 </head>
 <body>
-   <header>
-        <div class="container">
-            <img src="./img/logo.svg" alt="лого">
-            <p>По вопросам и предложениям</p>
-            <a href="#">pionerrr@sila.ru</a>
-            <p>Для консультаций</p>
-            <a href="#">+7 (495) 456-24-21</a>
-        </div>
-        <div class="container">
-            <p>Главная</p>
-            <p>О предприятии</p>
-            <p>Новости</p>
-            <p>Продукция</p>
-            <p>Услуги</p>
-            <p>Поддержка</p>
-            <p>География поставок</p>
-            <p>Контакты</p>
-            <img src="./img/phone 1.svg" alt="телефон">
-            <a href="#">Перезвоните мне</a>
-        </div>
-    </header> 
+   <header class="header">	
+	<div class="header__wrapper container">		
+		<div class="header__line header__line--up">			
+			<img class="header__logo" src="./img/logo.svg" alt="Логотип" width="180" height="38">			
+			<a class="header__contacts header__contacts--mail" href="mailto:pionerrr@sila.ru">
+				<span class="header__contacts-label">По вопросам и предложениям</span>
+				<span class="header__contacts-text">pionerrr@sila.ru</span>
+			</a>			
+			<a class="header__contacts header__contacts--phone" href="tel:+74954562421">
+				<span class="header__contacts-label">Для консультаций</span>
+				<span class="header__contacts-text">+7 (495) 456-24-21</span>
+			</a>
+		</div>		
+		<div class="header__line header__line--down">
+			<nav class="header__nav">
+				<ul class="header__list">
+					<li class="header__item"><a href="#" class="header__link">Главная</a></li>
+					<li class="header__item"><a href="#" class="header__link">О предприятии</a></li>
+					<li class="header__item"><a href="#" class="header__link">Новости</a></li>
+					<li class="header__item"><a href="#" class="header__link">Продукция</a></li>
+					<li class="header__item"><a href="#" class="header__link">Услуги</a></li>
+					<li class="header__item"><a href="#" class="header__link">Поддержка</a></li>
+					<li class="header__item"><a href="#" class="header__link">География поставок</a></li>
+					<li class="header__item"><a href="#" class="header__link">Контакты</a></li>
+				</ul>
+			</nav>			
+			<button class="header__button" type="button">
+				<img class="header__button-img" src="./img/phone 1.svg" alt="телефон">
+				<span class="header__button-text">Перезвоните мне</span>
+			</button>
+		</div>
+	</div>
+</header>
 </body>
 </html>
