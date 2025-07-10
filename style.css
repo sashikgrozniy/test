@@ -7,9 +7,6 @@ header {
     color: black;
     font-size: 14px;
 }
-p {
-    margin: 44px;
-}
 .container {
 	width: 100%;
     max-width: 1200px;
