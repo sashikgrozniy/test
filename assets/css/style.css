@@ -169,3 +169,19 @@ body {
 .header__contacts-text:hover {
 	border-bottom-color: transparent;
 }
+
+.header__nav {
+	flex-grow: 1;
+}
+
+.header__list {
+	display: flex;
+	gap: 40px;
+}
+
+.header__item {
+	display: block;
+}
+
+a { color: #1f65a7; transition: 0.6s linear; }
+a:hover { color: #ff0000; }
