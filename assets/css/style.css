@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+/* ===== ПОДКЛЮЧЕНИЕ ШРИФТОВ ===== */
+
+@font-face {
+	font-display: swap;
+	font-family: SS-3;
+	font-style: normal;
+	font-weight: 400;
+	src: url(../fonts/SourceSans3-Regular.woff2) format("woff2"), url(../fonts/SourceSans3-Regular.woff) format("woff")
+}
+
+@font-face {
+	font-display: swap;
+	font-family: SS-3;
+	font-style: normal;
+	font-weight: 600;
+	src: url(../fonts/SourceSans3-SemiBold.woff2) format("woff2"), url(../fonts/SourceSans3-SemiBold.woff) format("woff")
+}
+
+@font-face {
+	font-display: swap;
+	font-family: SS-3;
+	font-style: normal;
+	font-weight: 700;
+	src: url(../fonts/SourceSans3-Bold.woff2) format("woff2"), url(../fonts/SourceSans3-Bold.woff) format("woff")
+}
+
+/* ===== СТАНДАРТНЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ ===== */
+
+:root {
+	--accent: #607ce6;
+	--dark: #333;
+	--light: #fff;
+	--third: #d9d9d9;
+	--gray: #888;
+	--light-gray: #f5f5f5;
+	--trs: .4s ease; /* Для анимации */
+}
+
+*,
+:after,
+:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: currentColor;
+	-webkit-font-feature-settings: "lnum";
+	font-feature-settings: "lnum";
+	font-variant-numeric: lining-nums;
+	list-style-type: none;
+	margin: 0;
+	outline: 0;
+	overflow-anchor: none;
+	padding: 0;
+	position: relative;
+	scroll-behavior: smooth;
+	text-decoration: none
+}
+
+html {
+	block-size: 100%;
+	font: normal normal 16px/1.375 SS-3, sans-serif;
+	overflow: hidden auto
+}
+
+body {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	background-color: #fff;
+	color: var(--dark, #333);
+	max-inline-size: 100vw;
+	text-wrap: balance;
+	z-index: 1
+}
+
+/* ВАЖНО — Мы всегда стилизуем только классы, в редких случаях по тегу. */
+
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+/* ===== ШАПКА ===== */
+
+/* 1. Закрепим шапку наверху страницы, чтобы при скроле она ездила с нами. И поднимем z-index, чтобы была над всеми элементами.
+ Для этого мы спозиционируем её фиксированно и прижмем к верхнему, и левому краю страницы.
+ Так же растянем на всю ширину и закрасим фон, чтобы под ней элементов не было видно при скроле.
+ Тут немного покажу как использовать css-переменные. Чтобы их можно было применять везде, их указывают в :root
+ Но туда лучше прописывать общие переменные, например цвета. Желательно при указании переменной, после запятой ставить оригинальное значение.
+ Для того чтобы, если переменная будет не доступна (или просто нет), то ничего не нарушилось.
+ В данном случае, если переменная --light не будет доступна или её убрать, то у шапки все равно будет белый фон. */
+.header {
+	background-color: var(--light, #fff);
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+/* 2. Далее нужно в линиях расположить элементы горизонтально, так как это нужно и в верхней и нижней линии, то применим свойства на общем классе.
+ По макету далее смотрим, что линии имеют отступы внутренние сверхи и снизу. Но у каждой свой, поэтому свойства применяем на различающие классы.
+ Используем сокращенные записи свойства padding: верх/низ лево/право;
+ У нижней линии есть верхняя граница, добавим и её. Так же зададим внутри линии отступ между элементами свойством gap. */
+
+.header__line {
+	align-items: center;
+	display: flex;
+	gap: 20px;
+}
+
+.header__line--up {
+	padding: 35px 0;
+}
+
+.header__line--down {
+	border-top: 1px solid var(--gray, #888);
+	padding: 16px 0;
+}
+
+/* 3. Так как я использовал вместо картинки векторную графику, чтобы при загрузке страницы убрать запрос на скачивании её.
+ То тут придется явно задавать ширину и высоту. У картинки удоство в том, что если задать одно значение ширину или высоту, то второе значение адаптируется автоматом.
+ Но тут мы такой же эффект можем воссоздать, с помощью тех же css-переменных, только они уже будут локальны и видны элементам,
+ которые по структуре будут находится внутри блока с этим классом. Добавим flex-shrink, чтобы другие элементы во flex-контейнере не смогли сжать логотип.
+ И отбросим от него все остальные элементы свойством margin-right: auto. В чем прелесть векторных картинок и вставки их кодом на страницу, так это можно изменить им цвет, не создавая отдельные картинки под это.
+ Краситься в данном случае цвет в свойтве fill. */
+
+.header__logo {
+	--logo-xsize: 180px;
+	--logo-ysize: calc(var(--logo-xsize, 0px)/4.736842);
+	fill: var(--accent, #607ce6);
+	flex-shrink: 0;
+	height: var(--logo-ysize, 0px);
+	margin-right: auto;
+	width: var(--logo-xsize, 0px);
+}
+
+/* 4. Стилизуем контакты шапки. Задаем ссылке и подписи сверху блочность. А номеру телефона инлайновую блочность.
+ Чтобы можно было задавать отступы, но сохранить поведение строчного элемента. Так же как и с классами, одинаковые свойства у разных классов можно объединять.
+ Перенаправим текст вправо и номер (или почта) у нас прижмется вправо. Каждому внутреннему элементу контакта укажем размер и межстрочный интервал.
+ Тексту с номером (почтой) добавим поддчеркивание свое, а не стандартное и будем плавно убирать при наведении. */
+
+.header__contacts,
+.header__contacts-label {
+	display: block;
+}
+
+.header__contacts {
+	text-align: right;
+}
+
+.header__contacts-label {
+	color: var(--dark, #333);
+	font-size: 14px;
+	line-height: 1.14286; /* Будет 16px в высоту строка. */
+}
+
+.header__contacts-text {
+	border-bottom: 1px solid currentColor;
+	color: var(--accent, #607ce6);
+	display: inline-block;
+	font-size: 20px;
+	line-height: 1.2; /* Будет 24px в высоту строка. */
+	transition: border-bottom-color var(--trs);
+}
+
+.header__contacts-text:hover {
+	border-bottom-color: transparent;
+}
