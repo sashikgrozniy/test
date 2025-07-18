@@ -179,9 +179,9 @@ body {
 	gap: 40px;
 }
 
-.header__item {
+.header__link {
 	display: block;
+	transition: color var(--trs);
 }
 
-a { color: #1f65a7; transition: 0.6s linear; }
-a:hover { color: #ff0000; }
+.header__link:hover {color: var(--accent, #607ce6)}
